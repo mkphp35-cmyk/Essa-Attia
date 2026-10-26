@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Cairo', Tahoma, Arial, sans-serif;
+    direction: rtl;
+    background-color: #f1f5f9;
+  }
+}
+
+/* Custom styling for EMIS Form Checkboxes & Headers */
+.emis-cb-square {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.emis-cb-square:hover {
+  background: rgba(251, 191, 36, 0.35);
+}
+
+.emis-cb-square:checked::after {
+  content: "✔";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2cqw;
+  line-height: 1;
+  color: #000000;
+  font-weight: 900;
+}
+
+/* Print Specification for 100% original A4 replication */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .emis-sheet-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  
+  .emis-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    aspect-ratio: auto !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .emis-field, 
+  .emis-textarea,
+  .emis-field:focus,
+  .emis-textarea:focus {
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  .emis-cb-square:hover {
+    background: transparent !important;
+  }
+}
